@@ -872,3 +872,16 @@ main > section > div {
         font-size: 1rem;
     }
 }
+
+footer {
+    background: gradient(beige/dorado)
+    padding: elegante
+}
+
+.pie-pagina p:first-child {
+    "Te Esperamos" (más pequeño)
+}
+
+.nombres-boda {
+    "Diego & Michelle" (más grande y elegante)
+}

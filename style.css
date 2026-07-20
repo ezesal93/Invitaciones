@@ -1,0 +1,89 @@
+/* MOBILE FIRST - Base para todos los dispositivos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px; /* Base importante para legibilidad */
+}
+
+body {
+    width: 100%;
+    min-height: 100vh; /* Ocupa al menos toda la pantalla */
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff;
+    color: #333;
+    line-height: 1.6; /* Buena legibilidad */
+}
+
+
+.banner {
+    /* Ocupa el 100% del alto de la pantalla del celular */
+    min-height: 120vh;
+    width: 100%;
+
+    /* Imagen de fondo + Capa oscura semi-transparente para dar legibilidad al texto */
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
+        url('img/corazon.JPG');
+
+    /* Propiedades para ajustar la imagen a cualquier pantalla */
+    background-size: cover;       /* Escala la imagen para cubrir todo el espacio sin deformarse */
+    background-position: center;  /* Centra la parte principal de la foto */
+    background-repeat: no-repeat; /* Evita que la foto se repita */
+
+    /* Centra el texto vertical y horizontalmente */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start ;
+    text-align: center;
+    
+    padding: 20px;
+}
+
+.banner-content {
+    color: #ffffff; /* Texto en blanco para hacer contraste */
+    max-width: 600px;
+}
+
+.banner-content h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+    /* Sombrefeado opcional para resaltar aún más sobre la foto */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); 
+}
+
+.banner-content p {
+    font-size: 1.1rem;
+    font-weight: 300;
+    line-height: 1.4;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* Contenedor de la canción */
+.reproductor-cancion {
+    padding: 20px;
+    border-radius: 16px;
+    text-align: center;
+    max-width: 400px;
+    margin: 20px auto; /* Lo centra horizontalmente */
+}
+
+.reproductor-cancion h2 {
+    font-size: 1.2rem;
+    color: #4a4a4a;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+/* Estilo para ajustar el reproductor nativo */
+.reproductor-cancion audio {
+    width: 100%;
+    outline: none;
+}

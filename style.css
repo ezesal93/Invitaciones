@@ -401,13 +401,17 @@ body {
    ============================================ */
 .regalos-container {
     text-align: center;
-    padding: var(--spacing-sm) var(--spacing-md);
+    padding: var(--spacing-md) var(--spacing-sm);
+    width: 100%;
+    margin-top: var(--spacing-md);
 }
 
 .instruccion-regalos {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: var(--color-texto-medio);
-    margin-bottom: 15px;
+    margin-bottom: var(--spacing-md);
+    font-weight: var(--font-weight-medio);
+    letter-spacing: 0.3px;
 }
 
 /* ============================================
@@ -606,4 +610,265 @@ body {
    ============================================ */
 main > section > div {
     animation: fadeInUp 0.8s ease-out;
+}
+
+/* ============================================
+   SECCIÓN CONFIRMACIÓN DE ASISTENCIA
+   ============================================ */
+.confirmacion-seccion {
+    text-align: center;
+    padding: var(--spacing-lg) var(--spacing-sm);
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.confirmacion-seccion h2 {
+    font-size: 1.2rem;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 2px;
+    color: var(--color-texto-oscuro);
+    margin-bottom: 12px;
+}
+
+.subtitulo-confirmacion {
+    font-size: 0.9rem;
+    color: var(--color-texto-claro);
+    margin-bottom: var(--spacing-lg);
+    font-weight: var(--font-weight-medio);
+    letter-spacing: 0.3px;
+}
+
+/* ============================================
+   FORMULARIO - Estilos Generales
+   ============================================ */
+.formulario-confirmacion {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: var(--color-fondo-claro);
+    border: 1px solid var(--color-borde);
+    border-radius: 12px;
+    padding: var(--spacing-lg);
+    text-align: left;
+}
+
+/* Grupo de formulario */
+.form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.form-group:last-child {
+    margin-bottom: 0;
+}
+
+/* Etiquetas */
+.form-label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-texto-oscuro);
+    margin-bottom: 10px;
+    letter-spacing: 0.3px;
+}
+
+/* ============================================
+   INPUTS DE TEXTO
+   ============================================ */
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 0.95rem;
+    font-family: var(--font-family);
+    border: 2px solid var(--color-borde);
+    border-radius: 6px;
+    background-color: var(--color-blanco);
+    color: var(--color-texto-medio);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 3px rgba(194, 180, 154, 0.1);
+    background-color: rgba(194, 180, 154, 0.02);
+}
+
+.form-input::placeholder {
+    color: #999;
+    font-weight: var(--font-weight-regular);
+}
+
+.form-textarea {
+    resize: vertical;
+    font-size: 0.9rem;
+}
+
+/* ============================================
+   RADIO BUTTONS - Personalizados
+   ============================================ */
+.form-radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.form-radio {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    transition: opacity 0.2s ease;
+}
+
+.form-radio:hover {
+    opacity: 0.8;
+}
+
+.form-radio input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 12px;
+    cursor: pointer;
+    accent-color: var(--color-primario);
+}
+
+.radio-text {
+    font-size: 0.95rem;
+    color: var(--color-texto-medio);
+    font-weight: var(--font-weight-regular);
+}
+
+/* Cuando el radio está seleccionado */
+.form-radio input[type="radio"]:checked + .radio-text {
+    color: var(--color-texto-oscuro);
+    font-weight: var(--font-weight-medio);
+}
+
+/* ============================================
+   BOTÓN ENVIAR
+   ============================================ */
+.btn-enviar {
+    width: 100%;
+    background-color: var(--color-primario);
+    color: var(--color-blanco);
+    padding: 14px 28px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 1.2px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(194, 180, 154, 0.25);
+    transition: all 0.3s ease;
+    margin-top: var(--spacing-md);
+}
+
+.btn-enviar:hover:not(:disabled) {
+    background-color: var(--color-primario-oscuro);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(194, 180, 154, 0.35);
+}
+
+.btn-enviar:active:not(:disabled) {
+    transform: translateY(-1px);
+}
+
+.btn-enviar:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ============================================
+   MENSAJES - Éxito y Error
+   ============================================ */
+.form-mensaje {
+    background-color: #e8f5e9;
+    border: 1px solid #81c784;
+    border-radius: 6px;
+    padding: 15px;
+    margin-top: var(--spacing-md);
+    text-align: center;
+    animation: slideInUp 0.4s ease-out;
+}
+
+.form-mensaje p {
+    color: #2e7d32;
+    font-size: 0.9rem;
+    font-weight: var(--font-weight-medio);
+    margin: 0;
+}
+
+.form-mensaje-error {
+    background-color: #ffebee;
+    border: 1px solid #ef5350;
+    border-radius: 6px;
+    padding: 15px;
+    margin-top: var(--spacing-md);
+    text-align: center;
+    animation: slideInUp 0.4s ease-out;
+}
+
+.form-mensaje-error p {
+    color: #c62828;
+    font-size: 0.9rem;
+    font-weight: var(--font-weight-medio);
+    margin: 0;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   MENSAJES DE ERROR DEL CAMPO
+   ============================================ */
+.form-error {
+    display: none;
+    font-size: 0.8rem;
+    color: #d32f2f;
+    margin-top: 6px;
+    font-weight: var(--font-weight-medio);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (min-width: 480px) {
+    .formulario-confirmacion {
+        padding: 30px;
+    }
+
+    .form-radio-group {
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    .form-radio {
+        flex-basis: auto;
+    }
+}
+
+@media (min-width: 768px) {
+    .formulario-confirmacion {
+        max-width: 600px;
+        padding: 40px;
+    }
+
+    .form-label {
+        font-size: 0.95rem;
+    }
+
+    .form-input,
+    .form-textarea {
+        padding: 14px 18px;
+        font-size: 1rem;
+    }
 }

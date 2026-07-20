@@ -21,12 +21,127 @@
 
     <main>
         <section class="contenido-principal">
+
             <!-- Tarjeta del reproductor -->
             <div class="reproductor-cancion">
                 <audio controls>
                     <source src="sound/Mi bendición.mp3" type="audio/mpeg">
                 </audio>
             </div>
+
+            <!-- Cuencta Regresiva-->
+            <div class="cuenta-regresiva-container">
+                <p>Queremos que seas parte de este momento tan especial</p>
+                <div class="cuenta-regresiva">
+                    <div class="bloque-tiempo">
+                        <div class="circulo">
+                            <span id="dias">00</span>
+                        </div>
+                        <span class="etiqueta">DÍAS</span>
+                    </div>
+                    
+                    <div class="bloque-tiempo">
+                        <div class="circulo">
+                            <span id="horas">00</span>
+                        </div>
+                        <span class="etiqueta">HORAS</span>
+                    </div>
+
+                    <div class="bloque-tiempo">
+                        <div class="circulo">
+                            <span id="minutos">00</span>
+                        </div>
+                        <span class="etiqueta">MINUTOS</span>
+                    </div>
+
+                    <div class="bloque-tiempo">
+                        <div class="circulo">
+                            <span id="segundos">00</span>
+                        </div>
+                        <span class="etiqueta">SEGUNDOS</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Ceremonia -->
+            <div class="ceremonia">
+                <img src="img/anillo-de-bodas.png" alt="Icono Ceremonia" class="icono-ceremonia">
+                <h2>CEREMONIA</h2>
+                <p class="lugar">Iglesia Metodista Pentecostal Valdivia</p>
+                <p class="bajada">Te esperamos el</p>
+                
+                <!-- Contenedor para fecha y hora lado a lado -->
+                <div class="fecha-hora">
+                    <span class="fecha">16 SEP</span>
+                    <div class="divisor"></div>
+                    <span class="hora">11:00 AM</span>
+                </div>
+                <!-- Ubicación -->
+                <div class="ubicacion">
+                    <p class="direccion">Honduras 434 - Los Jazmines</p>
+                    <div class="ubicacion-container">
+                    <p class="ciudad">Valdivia, Chile</p>
+                    <!-- Reemplaza el enlace de href por el link real de Google Maps de la iglesia -->
+                    <a href="https://share.google/7RPXfmk1VxFKZM6tW" target="_blank" rel="noopener noreferrer" class="btn-ubicacion">
+                    VER UBICACIÓN
+                    </a>
+                </div>
+
+                </div>
+            </div>
+
+            <!-- Celebración -->
+            <div class="ceremonia">
+                <img src="img/salud.png" alt="Icono Ceremonia" class="icono-ceremonia">
+                <h2>CELEBRACIÓN</h2>
+                <p class="lugar">Círculo El Ancla Valdivia</p>
+                <p class="bajada">Te esperamos el</p>
+                
+                <!-- Contenedor para fecha y hora lado a lado -->
+                <div class="fecha-hora">
+                    <span class="fecha">16 SEP</span>
+                    <div class="divisor"></div>
+                    <span class="hora">02:00 PM</span>
+                </div>
+                <!-- Ubicación -->
+                <div class="ubicacion">
+                    <p class="direccion">12 De Febrero 2051</p>
+                    <div class="ubicacion-container">
+                    <p class="ciudad">Valdivia, Chile</p>
+                    <!-- Reemplaza el enlace de href por el link real de Google Maps de la iglesia -->
+                    <a href="https://maps.app.goo.gl/C7XgEDTePGfvd9np6" target="_blank" rel="noopener noreferrer" class="btn-ubicacion">
+                    VER UBICACIÓN
+                    </a>
+                </div>
+
+                </div>
+            </div>
+
+           <!--Dress Code-->
+           <di class="ceremonia">
+                <img src="img/vestido-de-novia.png" alt="Icono Ceremonia" class="icono-ceremonia">
+                <h2>DRESS CODE</h2>
+                <p class="lugar">Círculo El Ancla Valdivia</p>
+
+           </di>
+
+            <!--Nosotros-->
+            <div class="nosotros-seccion">
+                <h2>NOSOTROS</h2>
+                
+                <div class="galeria-collage">
+                    <img src="img/mar.JPG" alt="Foto pareja 1" class="foto-1">
+                    <img src="img/lago.JPG" alt="Foto pareja 2" class="foto-2">
+                    <img src="img/nieve.JPG" alt="Foto pareja 3" class="foto-3">
+                </div>
+            </div>
+            <!--Regalos-->
+           <di class="ceremonia">
+                <img src="img/caja-de-regalo.png" alt="Icono Ceremonia" class="icono-ceremonia">
+                <h2>DRESS CODE</h2>
+                <p class="lugar">Círculo El Ancla Valdivia</p>
+
+           </di>
+
         </section>
 
     </main>
@@ -37,6 +152,39 @@
         </section>
 
     </footer>
+
+
+    <script>
+        // Configura la fecha de la boda (Año, Mes - 1, Día, Hora, Minutos)
+        // NOTA: Los meses en JS van de 0 a 11 (Enero es 0, Diciembre es 11)
+        const fechaBoda = new Date(2026, 8, 16, 11, 0, 0).getTime(); 
+
+        function actualizarCuentaRegresiva() {
+            const ahora = new Date().getTime();
+            const diferencia = fechaBoda - ahora;
+
+            if (diferencia > 0) {
+                // Cálculos matemáticos para días, horas, minutos y segundos
+                const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+                const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+                const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+                // Inyectar valores en el HTML
+                document.getElementById('dias').innerText = dias;
+                document.getElementById('horas').innerText = horas < 10 ? '0' + horas : horas;
+                document.getElementById('minutos').innerText = minutos < 10 ? '0' + minutos : minutos;
+                document.getElementById('segundos').innerText = segundos < 10 ? '0' + segundos : segundos;
+            } else {
+                // Mensaje si la fecha ya pasó
+                document.querySelector('.cuenta-regresiva').innerHTML = "<h3>¡Llegó el gran día!</h3>";
+            }
+        }
+
+        // Ejecutar inmediatamente y luego actualizar cada segundo
+        actualizarCuentaRegresiva();
+        setInterval(actualizarCuentaRegresiva, 1000);
+    </script>
 
 </body>
 </html>

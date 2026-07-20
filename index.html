@@ -189,158 +189,103 @@
                 </div>
             </dialog>
 
-            <!-- FORMULARIO DE CONFIRMACIÓN DE ASISTENCIA -->
-            <div class="confirmacion-seccion">
-                <h2>CONFIRMAR ASISTENCIA</h2>
-                <p class="subtitulo-confirmacion">Por favor, ayúdanos a organizar este evento especial</p>
-                
-                <form id="formularioConfirmacion" class="formulario-confirmacion">
-                    
-                    <!-- Campo: Nombre -->
-                    <div class="form-group">
-                        <label for="nombre" class="form-label">Nombre y Apellido *</label>
-                        <input 
-                            type="text" 
-                            id="nombre" 
-                            name="nombre" 
-                            class="form-input" 
-                            placeholder="Ej: Juan Pérez"
-                            required
-                        >
-                        <span class="form-error" id="error-nombre"></span>
-                    </div>
-
-                    <!-- Campo: ¿Asistes? -->
-                    <div class="form-group">
-                        <label class="form-label">¿Asistirás a nuestra boda? *</label>
-                        <div class="form-radio-group">
-                            <label class="form-radio">
-                                <input 
-                                    type="radio" 
-                                    name="asiste" 
-                                    value="Sí, asistiré" 
-                                    required
-                                >
-                                <span class="radio-text">Sí, asistiré</span>
-                            </label>
-                            <label class="form-radio">
-                                <input 
-                                    type="radio" 
-                                    name="asiste" 
-                                    value="No podré asistir" 
-                                    required
-                                >
-                                <span class="radio-text">No podré asistir</span>
-                            </label>
-                        </div>
-                        <span class="form-error" id="error-asiste"></span>
-                    </div>
-
-                    <!-- Campo: ¿Alérgico? -->
-                    <div class="form-group">
-                        <label class="form-label">¿Tienes alergias alimentarias? *</label>
-                        <div class="form-radio-group">
-                            <label class="form-radio">
-                                <input 
-                                    type="radio" 
-                                    name="alergico" 
-                                    value="Sí" 
-                                    required
-                                >
-                                <span class="radio-text">Sí</span>
-                            </label>
-                            <label class="form-radio">
-                                <input 
-                                    type="radio" 
-                                    name="alergico" 
-                                    value="No" 
-                                    required
-                                >
-                                <span class="radio-text">No</span>
-                            </label>
-                        </div>
-                        <span class="form-error" id="error-alergico"></span>
-                    </div>
-
-                    <!-- Campo: Restricción Alimenticia (se muestra si selecciona "Sí" en alergias) -->
-                    <div class="form-group" id="grupo-restriccion" style="display: none;">
-                        <label for="restriccion" class="form-label">Cuéntanos sobre tu alergia *</label>
-                        <textarea 
-                            id="restriccion" 
-                            name="restriccion" 
-                            class="form-textarea" 
-                            placeholder="Ej: Alergia al maní, intolerancia a la lactosa, etc."
-                            rows="3"
-                        ></textarea>
-                        <span class="form-error" id="error-restriccion"></span>
-                    </div>
-
-                    <!-- Campo: ¿Vegetariano o Vegano? -->
-                    <div class="form-group">
-                        <label class="form-label">¿Sigues alguna dieta especial?</label>
-                        <div class="form-radio-group">
-                            <label class="form-radio">
-                                <input 
-                                    type="radio" 
-                                    name="dieta" 
-                                    value="Vegetariano/a" 
-                                >
-                                <span class="radio-text">Vegetariano/a</span>
-                            </label>
-                            <label class="form-radio">
-                                <input 
-                                    type="radio" 
-                                    name="dieta" 
-                                    value="Vegano/a" 
-                                >
-                                <span class="radio-text">Vegano/a</span>
-                            </label>
-                            <label class="form-radio">
-                                <input 
-                                    type="radio" 
-                                    name="dieta" 
-                                    value="Ninguna" 
-                                >
-                                <span class="radio-text">Ninguna</span>
-                            </label>
-                        </div>
-                        <span class="form-error" id="error-dieta"></span>
-                    </div>
-
-                    <!-- Botón Enviar -->
-                    <div class="form-group">
-                        <button type="submit" class="btn-enviar">
-                            ENVIAR CONFIRMACIÓN
-                        </button>
-                    </div>
-
-                    <!-- Mensaje de éxito -->
-                    <div class="form-mensaje" id="mensajeExito" style="display: none;">
-                        <p>✓ ¡Gracias! Tu confirmación fue registrada correctamente.</p>
-                    </div>
-
-                    <!-- Mensaje de error -->
-                    <div class="form-mensaje-error" id="mensajeError" style="display: none;">
-                        <p>✗ Hubo un error. Por favor, intenta de nuevo.</p>
-                    </div>
-
-                </form>
-            </div>
-
         </section>
 
     </main>
 
-<footer>
-    <section class="pie-pagina">
-        <p>Te Esperamos</p>
-        <p class="nombres-boda">Diego & Michelle</p>
-    </section>
-</footer>
+    <footer>
+        <section class="pie-pagina">
+            <p>a</p>
+        </section>
+
+    </footer>
+
+
+    <script>
+        // Configura la fecha de la boda (Año, Mes - 1, Día, Hora, Minutos)
+        // NOTA: Los meses en JS van de 0 a 11 (Enero es 0, Diciembre es 11)
+        const fechaBoda = new Date(2026, 8, 16, 11, 0, 0).getTime(); 
+
+        function actualizarCuentaRegresiva() {
+            const ahora = new Date().getTime();
+            const diferencia = fechaBoda - ahora;
+
+            if (diferencia > 0) {
+                // Cálculos matemáticos para días, horas, minutos y segundos
+                const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+                const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+                const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+                // Inyectar valores en el HTML
+                document.getElementById('dias').innerText = dias;
+                document.getElementById('horas').innerText = horas < 10 ? '0' + horas : horas;
+                document.getElementById('minutos').innerText = minutos < 10 ? '0' + minutos : minutos;
+                document.getElementById('segundos').innerText = segundos < 10 ? '0' + segundos : segundos;
+            } else {
+                // Mensaje si la fecha ya pasó
+                document.querySelector('.cuenta-regresiva').innerHTML = "<h3>¡Llegó el gran día!</h3>";
+            }
+        }
+
+        // Ejecutar inmediatamente y luego actualizar cada segundo
+        actualizarCuentaRegresiva();
+        setInterval(actualizarCuentaRegresiva, 1000);
+
+        // Referencias a los elementos del modal
+        const modal = document.getElementById('modalBancario');
+        const btnAbrir = document.getElementById('btnAbrirModal');
+        const btnCerrar = document.getElementById('btnCerrarModal');
+
+        // Abrir modal al hacer clic en el botón
+        btnAbrir.addEventListener('click', () => {
+            modal.showModal();
+        });
+
+        // Cerrar modal al hacer clic en CERRAR
+        btnCerrar.addEventListener('click', () => {
+            modal.close();
+        });
+
+        // Cerrar modal si el usuario hace clic fuera de la tarjeta
+        modal.addEventListener('click', (e) => {
+            const dialogBounds = modal.getBoundingClientRect();
+            if (
+                e.clientX < dialogBounds.left ||
+                e.clientX > dialogBounds.right ||
+                e.clientY < dialogBounds.top ||
+                e.clientY > dialogBounds.bottom
+            ) {
+                modal.close();
+            }
+        });
+
+        // Función para copiar RUT o N° de cuenta al portapapeles
+        function copiarTexto(idElemento, boton) {
+            const texto = document.getElementById(idElemento).innerText;
+
+            navigator.clipboard.writeText(texto).then(() => {
+                const textoOriginal = boton.innerText;
+                
+                boton.innerText = '¡Copiado!';
+                boton.classList.add('copiado');
+
+                setTimeout(() => {
+                    boton.innerText = textoOriginal;
+                    boton.classList.remove('copiado');
+                }, 1500);
+            }).catch(err => {
+                console.error('Error al copiar: ', err);
+            });
+        }
+
+    </script>
 
     <!-- Scripts separados por funcionalidad -->
     <script src="script.js"></script>
     <script src="formulario.js"></script>
+    <script src="scroll-animations.js"></script>
 
 </body>
+</html>
 </html>

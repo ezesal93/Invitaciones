@@ -1,7 +1,7 @@
 /* MOBILE FIRST - Base para todos los dispositivos */
 :root {
     /* Paleta de colores unificada */
-    --color-primario: #ac9e86;      /* Beige/dorado principal */
+    --color-primario: #c2b49a;      /* Beige/dorado principal */
     --color-primario-oscuro: #b0a187; /* Hover state */
     --color-texto-oscuro: #2c2c2c;   /* Títulos */
     --color-texto-medio: #4a4a4a;    /* Texto principal */
@@ -606,10 +606,144 @@ body {
 }
 
 /* ============================================
+   ANIMACIONES DE SCROLL - Elementos entran suavemente
+   ============================================ */
+
+/* Estado inicial: elementos invisibles y desplazados */
+.reproductor-cancion,
+.cuenta-regresiva-container,
+.ceremonia,
+.nosotros-seccion,
+.confirmacion-seccion,
+.regalos-container,
+.bloque-tiempo,
+.galeria-collage img {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Cuando entra en pantalla: animación */
+.reproductor-cancion.visible,
+.cuenta-regresiva-container.visible,
+.ceremonia.visible,
+.nosotros-seccion.visible,
+.confirmacion-seccion.visible,
+.regalos-container.visible,
+.galeria-collage img.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Bloques de tiempo con delay progresivo */
+.bloque-tiempo {
+    transition-delay: var(--delay, 0s);
+}
+
+.bloque-tiempo.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Fotos de galería con efecto especial */
+.galeria-collage img {
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.galeria-collage img.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Animación alternativa: deslizamiento lateral */
+@media (min-width: 768px) {
+    .ceremonia:nth-of-type(odd).visible {
+        animation: slideInLeft 0.8s ease-out forwards;
+    }
+    
+    .ceremonia:nth-of-type(even).visible {
+        animation: slideInRight 0.8s ease-out forwards;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ============================================
    ANIMACIÓN DE ENTRADA GENERAL
    ============================================ */
 main > section > div {
     animation: fadeInUp 0.8s ease-out;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+    background: linear-gradient(135deg, var(--color-primario) 0%, var(--color-primario-oscuro) 100%);
+    padding: var(--spacing-lg) var(--spacing-md);
+    text-align: center;
+    margin-top: var(--spacing-lg);
+    border-top: 2px solid var(--color-primario-oscuro);
+}
+
+.pie-pagina {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.pie-pagina p {
+    color: var(--color-blanco);
+    font-weight: var(--font-weight-regular);
+    margin: 0;
+}
+
+.pie-pagina p:first-child {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+    opacity: 0.95;
+}
+
+.nombres-boda {
+    font-size: 1.3rem;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 2px;
+    margin-top: 8px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+@media (min-width: 768px) {
+    footer {
+        padding: var(--spacing-lg) 40px;
+    }
+    
+    .pie-pagina p:first-child {
+        font-size: 1.1rem;
+    }
+    
+    .nombres-boda {
+        font-size: 1.5rem;
+    }
 }
 
 /* ============================================
@@ -871,38 +1005,4 @@ main > section > div {
         padding: 14px 18px;
         font-size: 1rem;
     }
-}
-
-footer {
-    background: linear-gradient(135deg, var(--color-primario) 0%, var(--color-primario-oscuro) 100%);
-    padding: var(--spacing-lg) var(--spacing-md);
-    text-align: center;
-    margin-top: var(--spacing-lg);
-    border-top: 2px solid var(--color-primario-oscuro);
-}
-
-.pie-pagina {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.pie-pagina p {
-    color: var(--color-blanco);
-    font-weight: var(--font-weight-regular);
-    margin: 0;
-}
-
-.pie-pagina p:first-child {
-    font-size: 1rem;
-    margin-bottom: 8px;
-    letter-spacing: 1px;
-    opacity: 0.95;
-}
-
-.nombres-boda {
-    font-size: 1.3rem;
-    font-weight: var(--font-weight-bold);
-    letter-spacing: 2px;
-    margin-top: 8px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }

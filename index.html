@@ -134,13 +134,60 @@
                     <img src="img/nieve.JPG" alt="Foto pareja 3" class="foto-3">
                 </div>
             </div>
-            <!--Regalos-->
-           <di class="ceremonia">
-                <img src="img/caja-de-regalo.png" alt="Icono Ceremonia" class="icono-ceremonia">
-                <h2>DRESS CODE</h2>
-                <p class="lugar">Círculo El Ancla Valdivia</p>
 
-           </di>
+            <!--Regalos-->
+            <div class="ceremonia">
+            <img src="img/caja-de-regalo.png" alt="Icono Ceremonia" class="icono-ceremonia">
+            <h2>REGALOS</h2>
+           </div>
+
+            <!-- Sección Regalos / Datos Bancarios -->
+            <div class="regalos-container">
+                <p class="instruccion-regalos">Si deseas realizarnos un presente:</p>
+                
+                <!-- Botón para abrir el modal -->
+                <button id="btnAbrirModal" class="btn-ubicacion">
+                    VER DATOS BANCARIOS
+                </button>
+            </div>
+
+            <!-- Ventana Emergente (Modal) -->
+            <dialog id="modalBancario" class="modal-bancario">
+                <div class="modal-contenido">
+                    <h3>DATOS BANCARIOS</h3>
+                    <p class="subtitulo-modal">Agradecemos de corazón tu cariño</p>
+                    
+                    <div class="tarjeta-datos">
+                        <div class="dato-item">
+                            <p><strong>Nombre:</strong> Michelle Rojas Palomera</p>
+                        </div>
+
+                        <div class="dato-item con-boton">
+                            <p><strong>RUT:</strong> <span id="rut-texto">20.679.768-1</span></p>
+                            <button class="btn-copiar" onclick="copiarTexto('rut-texto', this)">Copiar</button>
+                        </div>
+
+                        <div class="dato-item">
+                            <p><strong>Banco:</strong> Banco Fallabela</p>
+                        </div>
+
+                        <div class="dato-item">
+                            <p><strong>Tipo:</strong> Cuenta Correinte</p>
+                        </div>
+
+                        <div class="dato-item con-boton">
+                            <p><strong>N° Cuenta:</strong> <span id="cuenta-texto">19832889830</span></p>
+                            <button class="btn-copiar" onclick="copiarTexto('cuenta-texto', this)">Copiar</button>
+                        </div>
+
+                        <div class="dato-item">
+                            <p><strong>Email:</strong> contacto@correo.com</p>
+                        </div>
+                    </div>
+
+                    <button id="btnCerrarModal" class="btn-cerrar">CERRAR</button>
+                </div>
+            </dialog>
 
         </section>
 
@@ -184,6 +231,54 @@
         // Ejecutar inmediatamente y luego actualizar cada segundo
         actualizarCuentaRegresiva();
         setInterval(actualizarCuentaRegresiva, 1000);
+
+        // Referencias a los elementos del modal
+        const modal = document.getElementById('modalBancario');
+        const btnAbrir = document.getElementById('btnAbrirModal');
+        const btnCerrar = document.getElementById('btnCerrarModal');
+
+        // Abrir modal al hacer clic en el botón
+        btnAbrir.addEventListener('click', () => {
+            modal.showModal();
+        });
+
+        // Cerrar modal al hacer clic en CERRAR
+        btnCerrar.addEventListener('click', () => {
+            modal.close();
+        });
+
+        // Cerrar modal si el usuario hace clic fuera de la tarjeta
+        modal.addEventListener('click', (e) => {
+            const dialogBounds = modal.getBoundingClientRect();
+            if (
+                e.clientX < dialogBounds.left ||
+                e.clientX > dialogBounds.right ||
+                e.clientY < dialogBounds.top ||
+                e.clientY > dialogBounds.bottom
+            ) {
+                modal.close();
+            }
+        });
+
+        // Función para copiar RUT o N° de cuenta al portapapeles
+        function copiarTexto(idElemento, boton) {
+            const texto = document.getElementById(idElemento).innerText;
+
+            navigator.clipboard.writeText(texto).then(() => {
+                const textoOriginal = boton.innerText;
+                
+                boton.innerText = '¡Copiado!';
+                boton.classList.add('copiado');
+
+                setTimeout(() => {
+                    boton.innerText = textoOriginal;
+                    boton.classList.remove('copiado');
+                }, 1500);
+            }).catch(err => {
+                console.error('Error al copiar: ', err);
+            });
+        }
+
     </script>
 
 </body>

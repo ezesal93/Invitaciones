@@ -1,7 +1,7 @@
 /* MOBILE FIRST - Base para todos los dispositivos */
 :root {
     /* Paleta de colores unificada */
-    --color-primario: #c2b49a;      /* Beige/dorado principal */
+    --color-primario: #ac9e86;      /* Beige/dorado principal */
     --color-primario-oscuro: #b0a187; /* Hover state */
     --color-texto-oscuro: #2c2c2c;   /* Títulos */
     --color-texto-medio: #4a4a4a;    /* Texto principal */

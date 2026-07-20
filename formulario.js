@@ -74,7 +74,7 @@ formulario.addEventListener('submit', function(e) {
     boton.textContent = 'Enviando...';
 
     // REEMPLAZA ESTA URL CON TU SCRIPT DE GOOGLE APPS SCRIPT
-    fetch('https://script.google.com/macros/s/AKfycbzXquiGVHQ3hOS_kjGZ5ckuUUNOOQfH89m1vmS9rN4ZYlDVIYa5SUCvPiCU-VD_uwax/exec', {
+    fetch('https://script.google.com/macros/s/AKfycbyJUX8KTh3Ab8yClQMyyzBtDeEYxjPvSfOZkr-J8akO9O6tqPIzncv_TVnDj6lTJtAT/exec', {
         method: 'POST',
         body: JSON.stringify(dataToSend)
     })

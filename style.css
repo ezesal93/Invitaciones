@@ -145,65 +145,133 @@ body {
     outline: none;
 }
 
-.contenido-izq {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    /* 1. Centra verticalmente TODO el bloque (cita + audio juntos) respecto a la imagen */
-    justify-content: center; 
-    /* 2. Controla la distancia exacta entre la cita y el reproductor */
-    gap: 20px; 
-    padding: 20px; /* Un poco de margen interno opcional */
+/* ============================================
+   SECCIÓN CITA + IMAGEN  (Mobile First)
+   ============================================ */
+
+/* --- CONTENEDOR PRINCIPAL (Grid) ---
+   Móvil: una sola columna (imagen arriba, texto abajo)
+   Desktop: 2 columnas -> texto 2/3, imagen 1/3 con la MISMA altura */
+.contenedor-cita {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+    align-items: stretch;
+    width: 100%;
+    /* Deja siempre aire lateral en móviles, sin tocar los bordes */
+    max-width: min(900px, calc(100% - var(--spacing-lg)));
+    margin: var(--spacing-lg) auto;
+    padding: var(--spacing-md);
+    background-color: var(--color-fondo-claro);
+    border: 1px solid var(--color-borde);
+    border-radius: 18px;
 }
 
-/* Mantén estos para asegurar el ancho correcto */
+/* Columna de texto + audio */
+.contenido-izq {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--spacing-md);
+    min-width: 0; /* evita desbordes del texto dentro del grid */
+    padding: 0;
+}
+
+.bloque-texto-audio {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+/* --- LA CITA BÍBLICA --- */
+.cita-biblica {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+}
+
+.cita-biblica p {
+    margin: 0;
+    /* Tipografía fluida: se adapta sola al ancho del dispositivo */
+    font-size: clamp(0.95rem, 0.85rem + 0.6vw, 1.15rem);
+    line-height: 1.75;
+    color: var(--color-texto-medio);
+
+    /* --- CLAVE PARA QUE EL TEXTO SE VEA "CUADRADITO" --- */
+    text-align: justify;
+    text-justify: inter-word;
+    /* La separación silábica evita los "ríos" de espacios en blanco
+       que arruinan el texto justificado en pantallas angostas */
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    /* Reparte mejor las últimas líneas en navegadores modernos */
+    text-wrap: pretty;
+    overflow-wrap: break-word;
+}
+
+/* La referencia (Cantares 8:6b-7a) */
+.cita-biblica .referencia {
+    margin-top: var(--spacing-xs);
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--color-texto-claro);
+    text-align: right;      /* alineada al borde derecho del bloque justificado */
+    letter-spacing: 0.5px;
+    hyphens: none;
+}
+
+/* --- REPRODUCTOR --- */
 .reproductor-cancion {
     width: 100%;
+    max-width: 100%;
+    margin: 0;
 }
 
 .reproductor-cancion audio {
     width: 100%;
     display: block;
+    outline: none;
 }
 
-.contenedor-cita {
-    display: flex;
-    justify-content: center; /* Alinea verticalmente al centro cuando es columna */
-    /* align-items: center; */ /* ¡IMPORTANTE! Comentamos esta línea o la quitamos */
-    align-items: stretch; /* Esto hace que TODOS los hijos se estiren a la misma altura por defecto */
-    gap: 15px; /* Espacio de separación */
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    border: 1px solid #ddd; /* Opcional: solo para visualizar los bordes del contenedor */
-}
-
-/* La cita ocupa 2 partes del total de 3 */
-.cita-biblica {
-    flex: 2; /* Representa los 2/3 */
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Centra el texto verticalmente dentro de sus 2/3 */
-    padding: 10px; /* Espacio interno para que el texto no toque los bordes */
-}
-
-.cita-biblica p {
-    margin: 0 0 5px 0;
-    text-align: justify;
-}
-
-/* La imagen ocupa 1 parte del total de 3 */
+/* --- IMAGEN --- */
 .imagen-cita {
-    flex: 1; /* Representa el 1/3 */
-    
-    /* CAMBIOS AQUÍ: */
-    /* max-height: 50px; */ /* ¡ELIMINADO! Ya no limitamos la altura */
-    height: auto; /* Mantenemos esto o incluso podemos quitarlo */
-    align-self: stretch; /* ¡CLAVE! Obliga a la imagen a estirarse verticalmente */
-    width: 45%; /* Ocupa el ancho completo de su tercio */
-    
-    object-fit: cover; /* ¡CLAVE! Llenar el espacio sin deformar, puede recortar bordes */
-    object-position: center; /* Opcional: centra el encuadre del recorte */
+    display: block;
+    width: 100%;
+    height: 100%;
+    /* En móvil la imagen es una banda horizontal proporcionada */
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    order: -1; /* La imagen aparece ARRIBA del texto en móvil */
+}
+
+/* ============================================
+   CITA - TABLET Y ESCRITORIO
+   ============================================ */
+@media (min-width: 768px) {
+    .contenedor-cita {
+        grid-template-columns: 2fr 1fr; /* texto 2/3 - imagen 1/3 */
+        gap: var(--spacing-lg);
+        padding: var(--spacing-lg);
+    }
+
+    .contenido-izq {
+        padding: 0;
+    }
+
+    .imagen-cita {
+        order: 0;           /* vuelve a su lugar: a la derecha */
+        aspect-ratio: auto;  /* se adapta a la altura del texto */
+        /* Truco: height:0 evita que la imagen agrande la fila,
+           min-height:100% la estira exactamente a la altura del texto */
+        height: 0;
+        min-height: 100%;
+        align-self: stretch;
+    }
 }
 /* ============================================
    CUENTA REGRESIVA

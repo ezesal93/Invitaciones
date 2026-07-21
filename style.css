@@ -119,11 +119,12 @@ body {
    REPRODUCTOR DE CANCIÓN
    ============================================ */
 .reproductor-cancion {
-    padding: var(--spacing-lg) var(--spacing-md);
+    padding: 0;
     border-radius: 16px;
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
     max-width: 400px;
-    margin: var(--spacing-md) auto;
     animation: fadeInUp 0.8s ease-out;
 }
 
@@ -144,17 +145,17 @@ body {
 }
 
 .cita-biblica {
-    margin-bottom: var(--spacing-lg);
+    margin: 2rem 1rem 2rem 2rem;
     font-style: italic;
     color: var(--color-texto-oscuro);
     font-size: 1.1rem;
     line-height: 1.8;
-    text-align: center;
+    text-align: justify;
     animation: fadeInUp 0.8s ease-out 0.3s both;
 }
 
-.cita-biblica p {
-    margin: 0;
+.referencia {
+ text-align: center;
 }
 
 /* ============================================
@@ -176,7 +177,7 @@ body {
 }
 
 .cuenta-regresiva-container p {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--color-texto-medio);
     margin-bottom: var(--spacing-md);
     letter-spacing: 0.5px;
@@ -365,6 +366,36 @@ body {
 .btn-ubicacion:active {
     transform: translateY(-1px);
 }
+
+
+/* Contenedor en 3 columnas */
+.colores-prohibidos {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.color-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Círculos de color */
+.circulo-color {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* Los hace redondos */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    border: 1px solid #ddd; /* Borde sutil para que el blanco no se pierda en fondos claros */
+}
+
+/* Colores específicos (Cambia los códigos HEX según tus necesidades) */
+.color-blanco { background-color: #ffffff; }
+.color-beige  { background-color: #f5f5dc; }
+.color-rojo   { background-color: #F8E5E5; }
 
 /* ============================================
    SECCIÓN NOSOTROS

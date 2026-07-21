@@ -12,7 +12,7 @@
     --color-borde: #e8e4dc;          /* Bordes suaves */
     --color-fondo-claro: #f9f8f6;    /* Fondo tarjetas */
     --color-blanco: #ffffff;
-    --color-negro-overlay: rgba(0, 0, 0, 0.45);
+    --color-negro-overlay: rgba(0, 0, 0, 0.8);
     
     /* Tipografía */
     --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

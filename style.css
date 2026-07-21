@@ -12,7 +12,7 @@
     --color-borde: #e8e4dc;          /* Bordes suaves */
     --color-fondo-claro: #f9f8f6;    /* Fondo tarjetas */
     --color-blanco: #ffffff;
-    --color-negro-overlay: rgba(0, 0, 0, 0.8);
+    --color-negro-overlay: rgba(0, 0, 0, 0.6);
     
     /* Tipografía */
     --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -57,7 +57,7 @@ body {
     width: 100%;
     background-image: 
         linear-gradient(var(--color-negro-overlay), var(--color-negro-overlay)), 
-        url('img/corazon.JPG');
+        url('img/banner.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -139,25 +139,72 @@ body {
     }
 }
 
+
 .reproductor-cancion audio {
     width: 100%;
     outline: none;
 }
 
+.contenido-izq {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    /* 1. Centra verticalmente TODO el bloque (cita + audio juntos) respecto a la imagen */
+    justify-content: center; 
+    /* 2. Controla la distancia exacta entre la cita y el reproductor */
+    gap: 20px; 
+    padding: 20px; /* Un poco de margen interno opcional */
+}
+
+/* Mantén estos para asegurar el ancho correcto */
+.reproductor-cancion {
+    width: 100%;
+}
+
+.reproductor-cancion audio {
+    width: 100%;
+    display: block;
+}
+
+.contenedor-cita {
+    display: flex;
+    justify-content: center; /* Alinea verticalmente al centro cuando es columna */
+    /* align-items: center; */ /* ¡IMPORTANTE! Comentamos esta línea o la quitamos */
+    align-items: stretch; /* Esto hace que TODOS los hijos se estiren a la misma altura por defecto */
+    gap: 15px; /* Espacio de separación */
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    border: 1px solid #ddd; /* Opcional: solo para visualizar los bordes del contenedor */
+}
+
+/* La cita ocupa 2 partes del total de 3 */
 .cita-biblica {
-    margin: 2rem 1rem 2rem 2rem;
-    font-style: italic;
-    color: var(--color-texto-oscuro);
-    font-size: 1.1rem;
-    line-height: 1.8;
-    text-align: justify;
-    animation: fadeInUp 0.8s ease-out 0.3s both;
+    flex: 2; /* Representa los 2/3 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra el texto verticalmente dentro de sus 2/3 */
+    padding: 10px; /* Espacio interno para que el texto no toque los bordes */
 }
 
-.referencia {
- text-align: center;
+.cita-biblica p {
+    margin: 0 0 5px 0;
+    text-align: center;
 }
 
+/* La imagen ocupa 1 parte del total de 3 */
+.imagen-cita {
+    flex: 1; /* Representa el 1/3 */
+    
+    /* CAMBIOS AQUÍ: */
+    /* max-height: 50px; */ /* ¡ELIMINADO! Ya no limitamos la altura */
+    height: auto; /* Mantenemos esto o incluso podemos quitarlo */
+    align-self: stretch; /* ¡CLAVE! Obliga a la imagen a estirarse verticalmente */
+    width: 45%; /* Ocupa el ancho completo de su tercio */
+    
+    object-fit: cover; /* ¡CLAVE! Llenar el espacio sin deformar, puede recortar bordes */
+    object-position: center; /* Opcional: centra el encuadre del recorte */
+}
 /* ============================================
    CUENTA REGRESIVA
    ============================================ */

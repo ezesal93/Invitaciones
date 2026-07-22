@@ -9,42 +9,72 @@
 </head>
 <body>
     <header>
-        <section class="banner">
-            <div class="banner-content">
-                <h1>¡Nos casamos!</h1>
-                <p>Diego & Michelle</p>
-                <p>16-09-26</p>
+        <!-- ============ BANNER DE ENTRADA ============ -->
+        <section class="banner-boda">
+
+            <!-- 1. TITULO -->
+            <div class="banner-intro">
+                <h1 class="nos-casamos">¡Nos Casamos!</h1>
+                <span class="banner-ornamento" aria-hidden="true"><i></i></span>
             </div>
 
-        </section>
+            <!-- 2. FOTO COMPLETA, sin recortes -->
+            <div class="banner-marco">
+                <img src="img/corazon.JPG" alt="Diego y Michelle" class="banner-imagen">
+            </div>
 
-    </header>
+            <!-- 3. NOMBRES + LINEA + FECHA -->
+            <div class="banner-content">
 
-    <main>
-        <section class="contenido-principal">
+                <div class="banner-datos-grid">
 
-            <div class="contenedor-cita">
-                <!-- Columna Izquierda (Ocupa 2/3) -->
-                <div class="contenido-izq">
-                    
-                    <!-- GRUPO: Cita + Audio juntos -->
-                    <div class="bloque-texto-audio">
-                        <div class="cita-biblica">
-                            <p>Como llama divina es el fuego ardiente del amor. Ni las muchas aguas pueden apagarlo, ni los ríos pueden extinguirlo.</p>
-                            <p class="referencia">Cantares 8:6b-7a</p>
-                        </div>
+                    <div class="banner-nombres-col">
+                        <span class="nombre">DIEGO</span>
+                        <span class="union">&amp;</span>
+                        <span class="nombre">MICHELLE</span>
+                    </div>
 
-                        <div class="reproductor-cancion">
-                            <audio controls>
-                                <source src="sound/Mi bendición.mp3" type="audio/mpeg">
-                            </audio>
-                        </div>
+                    <div class="banner-separador-col" aria-hidden="true">
+                        <div class="linea-vertical"></div>
+                    </div>
+
+                    <div class="banner-fecha-col">
+                        <span>16</span>
+                        <span>09</span>
+                        <span>26</span>
                     </div>
 
                 </div>
 
-                <!-- Columna Derecha: Imagen (Ocupa 1/3) -->
-                <img src="img/corazon.JPG" alt="Imagen representativa" class="imagen-cita">
+
+            </div>
+
+            <!-- 4. INDICADOR DE SCROLL -->
+            <a href="#contenido" class="banner-scroll">
+                <span>Desliza</span>
+                <i aria-hidden="true"></i>
+            </a>
+
+        </section>
+    </header>
+
+    <main>
+        <section class="contenido-principal" id="contenido">
+
+            <!-- CITA CENTRADA + AUDIO DEBAJO -->
+            <div class="contenedor-cita">
+
+                <div class="cita-biblica">
+                    <p>Como llama divina es el fuego ardiente del amor. Ni las muchas aguas pueden apagarlo, ni los ríos pueden extinguirlo.</p>
+                    <p class="referencia">Cantares 8:6b-7a</p>
+                </div>
+
+                <div class="reproductor-cancion">
+                    <audio controls>
+                        <source src="sound/Mi bendición.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+
             </div>
 
 
@@ -151,7 +181,7 @@
                         </div>
                         <div class="color-item">
                             <span class="circulo-color color-beige"></span>
-                            <small>Derivados</small>
+                            <small>Beige Derivados</small>
                         </div>
                         <div class="color-item">
                             <span class="circulo-color color-rojo"></span>
@@ -177,7 +207,7 @@
                 
                 <!-- Contenedor de Regalos / Datos Bancarios -->
                 <div class="regalos-container">
-                    <p class="instruccion-regalos">Valoramos mucho tu compañaía, sin embaergo si deseas realizarnos un presente, te comparitmos nuestros datos</p>
+                    <p class="instruccion-regalos">Si deseas realizarnos un presente:</p>
                     
                     <!-- Botón para abrir el modal -->
                     <button id="btnAbrirModal" class="btn-ubicacion">
